@@ -1,0 +1,2 @@
+/home/nicolas/esp/xtensa-lx106-elf/bin/xtensa-lx106-elf-ar qc libprotocol_examples_common.a  CMakeFiles/__idf_protocol_examples_common.dir/connect.c.obj CMakeFiles/__idf_protocol_examples_common.dir/stdin_out.c.obj
+/home/nicolas/esp/xtensa-lx106-elf/bin/xtensa-lx106-elf-ranlib libprotocol_examples_common.a
