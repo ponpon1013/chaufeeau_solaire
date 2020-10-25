@@ -1196,32 +1196,32 @@ clean: CMakeFiles/size.dir/clean
 # Target rules for target CMakeFiles/simple.elf.dir
 
 # All Build rule for target.
+CMakeFiles/simple.elf.dir/all: esp-idf/freemodbus/CMakeFiles/__idf_freemodbus.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/jsmn/CMakeFiles/__idf_jsmn.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/json/CMakeFiles/__idf_json.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
 CMakeFiles/simple.elf.dir/all: CMakeFiles/_project_elf_src.dir/all
 CMakeFiles/simple.elf.dir/all: CMakeFiles/__idf_build_target.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/tcpip_adapter/CMakeFiles/__idf_tcpip_adapter.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/console/CMakeFiles/__idf_console.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/main/CMakeFiles/__idf_main.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/freemodbus/CMakeFiles/__idf_freemodbus.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/jsmn/CMakeFiles/__idf_jsmn.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/json/CMakeFiles/__idf_json.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/console/CMakeFiles/__idf_console.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
+CMakeFiles/simple.elf.dir/all: esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/openssl/CMakeFiles/__idf_openssl.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/smartconfig_ack/CMakeFiles/__idf_smartconfig_ack.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/spi_ram/CMakeFiles/__idf_spi_ram.dir/all
 CMakeFiles/simple.elf.dir/all: esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/main/CMakeFiles/__idf_main.dir/all
-CMakeFiles/simple.elf.dir/all: esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir/all
 	$(MAKE) -f CMakeFiles/simple.elf.dir/build.make CMakeFiles/simple.elf.dir/depend
 	$(MAKE) -f CMakeFiles/simple.elf.dir/build.make CMakeFiles/simple.elf.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nicolas/esp/chaufeeau_solaire/build/CMakeFiles --progress-num=100 "Built target simple.elf"
@@ -2915,30 +2915,30 @@ esp-idf/esp8266/preinstall:
 # Target rules for target esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir
 
 # All Build rule for target.
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/freemodbus/CMakeFiles/__idf_freemodbus.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/jsmn/CMakeFiles/__idf_jsmn.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/json/CMakeFiles/__idf_json.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/tcpip_adapter/CMakeFiles/__idf_tcpip_adapter.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/console/CMakeFiles/__idf_console.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/main/CMakeFiles/__idf_main.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/freemodbus/CMakeFiles/__idf_freemodbus.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/jsmn/CMakeFiles/__idf_jsmn.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/json/CMakeFiles/__idf_json.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/console/CMakeFiles/__idf_console.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
+esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/openssl/CMakeFiles/__idf_openssl.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/smartconfig_ack/CMakeFiles/__idf_smartconfig_ack.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/spi_ram/CMakeFiles/__idf_spi_ram.dir/all
 esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/main/CMakeFiles/__idf_main.dir/all
-esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/all: esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir/all
 	$(MAKE) -f esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/build.make esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/depend
 	$(MAKE) -f esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/build.make esp-idf/esp8266/CMakeFiles/__ldgen_output_esp8266.project.ld.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nicolas/esp/chaufeeau_solaire/build/CMakeFiles --progress-num= "Built target __ldgen_output_esp8266.project.ld"
@@ -4022,9 +4022,9 @@ esp-idf/esp_http_client/preinstall:
 
 # All Build rule for target.
 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all: esp-idf/tcpip_adapter/CMakeFiles/__idf_tcpip_adapter.dir/all
+esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
-esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 	$(MAKE) -f esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/build.make esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/depend
 	$(MAKE) -f esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/build.make esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nicolas/esp/chaufeeau_solaire/build/CMakeFiles --progress-num=12 "Built target __idf_esp_http_client"
@@ -4136,10 +4136,10 @@ esp-idf/esp_https_ota/preinstall:
 
 # All Build rule for target.
 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/tcpip_adapter/CMakeFiles/__idf_tcpip_adapter.dir/all
-esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
-esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
+esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
+esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
 	$(MAKE) -f esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/build.make esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/depend
 	$(MAKE) -f esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/build.make esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nicolas/esp/chaufeeau_solaire/build/CMakeFiles --progress-num= "Built target __idf_esp_https_ota"
@@ -4489,9 +4489,9 @@ esp-idf/libsodium/preinstall:
 
 # All Build rule for target.
 esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all: esp-idf/tcpip_adapter/CMakeFiles/__idf_tcpip_adapter.dir/all
+esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
 esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
-esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 	$(MAKE) -f esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/build.make esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/depend
 	$(MAKE) -f esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/build.make esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nicolas/esp/chaufeeau_solaire/build/CMakeFiles --progress-num=25,26,27,28,29,30,31,32,33,34,35,36,37 "Built target __idf_libsodium"
@@ -4565,9 +4565,9 @@ esp-idf/mqtt/preinstall:
 
 # All Build rule for target.
 esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all: esp-idf/tcpip_adapter/CMakeFiles/__idf_tcpip_adapter.dir/all
+esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
 esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
-esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 	$(MAKE) -f esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/build.make esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/depend
 	$(MAKE) -f esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/build.make esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nicolas/esp/chaufeeau_solaire/build/CMakeFiles --progress-num=53 "Built target __idf_mqtt"
@@ -4988,29 +4988,29 @@ esp-idf/main/preinstall:
 # Target rules for target esp-idf/main/CMakeFiles/__idf_main.dir
 
 # All Build rule for target.
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/freemodbus/CMakeFiles/__idf_freemodbus.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/jsmn/CMakeFiles/__idf_jsmn.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/json/CMakeFiles/__idf_json.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/tcpip_adapter/CMakeFiles/__idf_tcpip_adapter.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/console/CMakeFiles/__idf_console.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/freemodbus/CMakeFiles/__idf_freemodbus.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/jsmn/CMakeFiles/__idf_jsmn.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/json/CMakeFiles/__idf_json.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/libsodium/CMakeFiles/__idf_libsodium.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/console/CMakeFiles/__idf_console.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/openssl/CMakeFiles/__idf_openssl.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/smartconfig_ack/CMakeFiles/__idf_smartconfig_ack.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/spi_ram/CMakeFiles/__idf_spi_ram.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/protocol_examples_common/CMakeFiles/__idf_protocol_examples_common.dir/all
 	$(MAKE) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/depend
 	$(MAKE) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nicolas/esp/chaufeeau_solaire/build/CMakeFiles --progress-num= "Built target __idf_main"
