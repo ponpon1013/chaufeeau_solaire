@@ -42,7 +42,7 @@ esp_err_t spiffs_utils_init(){
         ESP_LOGE(TAG, "Failed to get SPIFFS partition information (%s)", esp_err_to_name(ret));
         return ret;
     } else {
-        ESP_LOGI(TAG, "Partition size: total: %u, used: %u", total, used);
+        ESP_LOGI(TAG, "Partition size: total: %i, used: %i", total, used);
         return ret;
     }
 }
