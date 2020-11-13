@@ -18,6 +18,21 @@ extern "C" {
 
 #define EXAMPLE_INTERFACE TCPIP_ADAPTER_IF_STA
 
+#define EXAMPLE_MAX_STA_CONN 32
+
+typedef struct connected connected;
+
+struct connected{
+    uint8_t mac[6];
+    //ip4_addr_t ip;
+};
+
+typedef struct connected_tab connected_tab;
+struct connected_tab{
+    connected connected_tab[EXAMPLE_MAX_STA_CONN];
+    size_t size;
+};
+
 /**
  * @brief Configure Wi-Fi or Ethernet, connect, wait for IP
  *
@@ -33,7 +48,7 @@ extern "C" {
  *
  * @return ESP_OK on successful connection
  */
-esp_err_t example_connect(void);
+esp_err_t example_connect(connected_tab*);
 
 /**
  * Counterpart to example_connect, de-initializes Wi-Fi or Ethernet

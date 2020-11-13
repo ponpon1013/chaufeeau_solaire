@@ -1,4 +1,4 @@
-menu "Example Connection Configuration"
+menu "Connection Configuration"
     config EXAMPLE_WIFI_SSID
         string "WiFi SSID"
         default "myssid"
@@ -11,6 +11,12 @@ menu "Example Connection Configuration"
         help
             WiFi password (WPA or WPA2) for the example to use.
             Can be left blank if the network has no security set.
+
+    config HOSTNAME_CONNECT_AP
+        string "hostanme"
+        default "esp8266"
+        help
+            hostname of component.
 
     config EXAMPLE_CONNECT_IPV6
         bool "Obtain IPv6 address"

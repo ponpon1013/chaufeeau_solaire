@@ -1,0 +1,20 @@
+{
+    "ap":
+        {
+            "name":"chauffe_eau_station",
+            "password":"chauffe_eau_station"
+        }
+    ,
+    "sta":[
+        {
+            "name_sta":"marais",
+            "password":"Estelle&Nico1013",
+            "actif":true
+        },
+        {
+            "name_sat":"livebos",
+            "password":"enbois",
+            "actif":false
+        }
+    ]
+}

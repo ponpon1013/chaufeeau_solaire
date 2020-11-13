@@ -18,9 +18,11 @@
 #include "nvs.h"
 #include "nvs_flash.h"
 
+#include <spiffs_utils.h>
 #include <esp_http_server.h>
 
 static const char *TAG="APP";
+
 
 /* An HTTP GET handler */
 esp_err_t hello_get_handler(httpd_req_t *req)
@@ -210,7 +212,7 @@ void stop_webserver(httpd_handle_t server)
     httpd_stop(server);
 }
 
-static httpd_handle_t server = NULL;
+
 
 static void disconnect_handler(void* arg, esp_event_base_t event_base, 
                                int32_t event_id, void* event_data)
@@ -235,15 +237,24 @@ static void connect_handler(void* arg, esp_event_base_t event_base,
 
 void app_main()
 {
+    connected_tab *connected_AP=os_zalloc(sizeof(wifi_config_t));
+    connected_AP->size=0;
+    
     ESP_ERROR_CHECK(nvs_flash_init());
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_event_loop_create_default());
 
+    ESP_ERROR_CHECK(spiffs_utils_init());
 
-    ESP_ERROR_CHECK(example_connect());
+    httpd_handle_t server = NULL;
+
+    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_AP_START, &connect_handler, &server));
+    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_AP_STOP, &disconnect_handler, &server));
+    ESP_ERROR_CHECK(example_connect(connected_AP));
 
     ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &connect_handler, &server));
     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &disconnect_handler, &server));
+    
 
     server = start_webserver();
 }
