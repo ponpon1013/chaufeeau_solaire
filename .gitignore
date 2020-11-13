@@ -2005,3 +2005,4 @@ build/wpa_supplicant/src/wps/wps_enrollee.o
 build/wpa_supplicant/src/wps/wps_registrar.o
 build/wpa_supplicant/src/wps/wps_validate.o
 build/wpa_supplicant/src/wps/wps.o
+web_spiffs.bin
