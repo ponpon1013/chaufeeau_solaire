@@ -21,6 +21,12 @@
 #include <spiffs_utils.h>
 #include <esp_http_server.h>
 
+
+//#define SPIFFS_WIFI "storage_wifi" given in protocol_examples_common.h
+#define SPIFFS_WEB "storage"
+//#define PATH_WIFI "/wifi" given in protocol_examples_common.h
+#define PATH_WEB "/web"
+
 static const char *TAG="APP";
 
 
@@ -244,7 +250,8 @@ void app_main()
     ESP_ERROR_CHECK(esp_netif_init());
     ESP_ERROR_CHECK(esp_event_loop_create_default());
 
-    ESP_ERROR_CHECK(spiffs_utils_init());
+    ESP_ERROR_CHECK(spiffs_utils_init(SPIFFS_WIFI,PATH_WIFI));
+    ESP_ERROR_CHECK(spiffs_utils_init(SPIFFS_WEB,PATH_WEB));
 
     httpd_handle_t server = NULL;
 

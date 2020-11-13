@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/../ESP8266_RTOS_SDK/**"
+                "${workspaceFolder}/../ESP8266_RTOS_SDK/**",
+                "${workspaceFolder}/../ESP8266_RTOS_SDK/components/spiffs/include"
                 
             ],
             "defines": [],

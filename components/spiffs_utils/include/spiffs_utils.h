@@ -4,8 +4,8 @@
 #include "esp_err.h"
 #include "esp_log.h"
 
-#define SPIFFS_WIFI "storage_wifi"
 
-esp_err_t spiffs_utils_init();
+
+esp_err_t spiffs_utils_init(const char*,char* path);
 
 #endif

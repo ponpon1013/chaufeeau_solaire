@@ -19,6 +19,8 @@ extern "C" {
 #define EXAMPLE_INTERFACE TCPIP_ADAPTER_IF_STA
 
 #define EXAMPLE_MAX_STA_CONN 32
+#define PATH_WIFI "/wifi"
+#define SPIFFS_WIFI "storage_wifi"
 
 typedef struct connected connected;
 

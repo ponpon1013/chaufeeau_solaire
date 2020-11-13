@@ -22,7 +22,6 @@
 #include "lwip/err.h"
 #include "lwip/sys.h"
 
-#include "spiffs_utils.h"
 #include <stdio.h>
 #include "cJSON.h"
 
@@ -45,6 +44,7 @@
 #define MAX_LENGTH_BUFF 16
 #define NAME_LENGHT 16
 #define PSWD_LENGHT 16
+#define FILENAME_LENGHT 128
 
 
 static EventGroupHandle_t s_connect_event_group;
@@ -313,7 +313,10 @@ esp_err_t example_connect(connected_tab *conected_AP)
     char *string= malloc(sizeof(char*) * MAX_LENGTH);
     char* buff = malloc(sizeof(char) * MAX_LENGTH_BUFF);
     FILE *f=(FILE *) malloc( sizeof(FILE));
-    const char* filename="/spiffs/wifi.conf";
+    char* filename=malloc(sizeof(char) * FILENAME_LENGHT);
+    strcat(filename,PATH_WIFI);
+    strcat(filename,"/");
+    strcat(filename,"wifi.conf");
     
     //strcpy(*string,"");
 

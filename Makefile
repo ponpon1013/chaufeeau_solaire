@@ -9,3 +9,7 @@ PROJECT_NAME := chaufeeEau
 
 include $(IDF_PATH)/make/project.mk
 
+spiffs_web:ressources/web/*
+	mkspiffs -c ressources/web/ -p 256 -b 8192 -s 0xFC000 web_spiffs.bin
+	esptool --chip esp8266 --port /dev/ttyUSB0 --baud 115200 write_flash 0x304000 web_spiffs.bin
+

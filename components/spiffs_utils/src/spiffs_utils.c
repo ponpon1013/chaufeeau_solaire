@@ -9,12 +9,12 @@
 
 static const char *TAG = "spîffs_utils";
 
-esp_err_t spiffs_utils_init(){
+esp_err_t spiffs_utils_init(const char* label,char* path){
     ESP_LOGI(TAG, "Initializing SPIFFS");
     
     esp_vfs_spiffs_conf_t conf = {
-      .base_path = "/spiffs",
-      .partition_label = SPIFFS_WIFI,
+      .base_path = path,
+      .partition_label = label,
       .max_files = 5,
       .format_if_mount_failed = true
     };
@@ -37,7 +37,7 @@ esp_err_t spiffs_utils_init(){
     }
     
     size_t total = 0, used = 0;
-    ret = esp_spiffs_info(SPIFFS_WIFI, &total, &used);
+    ret = esp_spiffs_info(label, &total, &used);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to get SPIFFS partition information (%s)", esp_err_to_name(ret));
         return ret;
