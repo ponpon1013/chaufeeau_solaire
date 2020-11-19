@@ -7,7 +7,7 @@
    CONDITIONS OF ANY KIND, either express or implied.
 */
 #include <sys/param.h>
-
+#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_system.h"
@@ -17,7 +17,11 @@
 #include "protocol_examples_common.h"
 #include "nvs.h"
 #include "nvs_flash.h"
-
+#include "esp_vfs.h"
+#include <sys/param.h>
+#include <sys/unistd.h>
+#include <sys/stat.h>
+#include <dirent.h>
 #include <spiffs_utils.h>
 #include <esp_http_server.h>
 
@@ -27,7 +31,102 @@
 //#define PATH_WIFI "/wifi" given in protocol_examples_common.h
 #define PATH_WEB "/web"
 
+#define MAX_LENGTH_BUFFER_HTTP_ANSWER 128
+#define FILE_PATH_MAX (ESP_VFS_PATH_MAX + CONFIG_SPIFFS_OBJ_NAME_LEN)
+/* Scratch buffer size */
+#define SCRATCH_BUFSIZE  8192
+
 static const char *TAG="APP";
+
+
+
+bool parseRequest(const char *reference_uri, const char *uri_to_match, size_t match_upto){
+    ESP_LOGI(TAG,"reference_uri:%s",reference_uri);
+    ESP_LOGI(TAG,"uri_to_match:%s",uri_to_match);
+    char* fin=(char *) malloc( FILENAME_LENGHT );
+    char* debut=(char *) malloc( FILENAME_LENGHT );
+    char* findDebut=(char *) malloc( FILENAME_LENGHT );
+    char* findFin=(char *) malloc( FILENAME_LENGHT );
+    fin=strchr(reference_uri,'*');
+    if (fin!=NULL){
+        ESP_LOGI(TAG,"fin:%s",fin);
+        ESP_LOGI(TAG,"strlen(reference_uri):%i",strlen(reference_uri));
+        ESP_LOGI(TAG,"tsrlen(fin):%i",strlen(fin));
+        int sizeDebut=strlen(reference_uri)-strlen(fin)-1;
+        if (sizeDebut!=0){
+            strncpy(debut,reference_uri,sizeDebut);
+            ESP_LOGI(TAG,"debut:%s",debut);
+            findDebut=strstr(uri_to_match,debut);
+            ESP_LOGI(TAG,"findDebut:%s",findDebut!=NULL?findDebut:"not found");
+            findFin=strstr(uri_to_match+strlen(findDebut),fin+1);
+            ESP_LOGI(TAG,"findFin:%s",findFin!=NULL?findFin:"not found");
+            return (findDebut!=NULL && findFin!=NULL);
+        }else{
+            findFin=strstr(uri_to_match,fin+1);
+            ESP_LOGI(TAG,"findFin:%s",findFin!=NULL?findFin:"not found");
+            return (findDebut!=NULL && findFin!=NULL);
+        }
+    }
+    else
+    {
+        return (strcmp(reference_uri,uri_to_match)==0);
+    }
+}
+
+esp_err_t send_ressource(char* toSend,httpd_req_t *req){
+    //on récupere le nom du fichier
+    FILE *f=(FILE *) malloc( sizeof(FILE));
+    // on ouvre le fichier en lecture
+    f = fopen(toSend, "r");
+    if ( f == NULL ) {
+        ESP_LOGE(TAG,"Cannot open file %s\n",toSend);
+        httpd_resp_send_404(req);
+        fclose(f);
+        return ESP_ERR_NOT_FOUND;
+    }
+    else
+    //on l'envoie au client
+    {
+        char * buffer = (char *) malloc( MAX_LENGTH_BUFFER_HTTP_ANSWER );
+        while ( ! feof(f) ) {
+            fgets( buffer, MAX_LENGTH_BUFFER_HTTP_ANSWER, f );
+            httpd_resp_send_chunk(req,buffer,strlen(buffer));
+            /*ESP_LOGI(TAG,"sent:%s",buffer);
+            ESP_LOGI(TAG,"size sent:%i",strlen(buffer));*/
+        }
+        httpd_resp_send_chunk(req,NULL,0);
+        free(buffer);
+        fclose(f);
+    }
+    return ESP_OK;
+}
+
+//HTML handler
+esp_err_t html_get_handler(httpd_req_t *req)
+{
+    //on récupere le nom du fichier
+    //FILE *f=(FILE *) malloc( sizeof(FILE));
+    char* filename=malloc(sizeof(char) * FILENAME_LENGHT);
+    strcpy(filename,PATH_WEB);
+    //strcat(filename,"/");
+    strcat(filename,req->uri);
+    httpd_resp_set_type(req,"text/html");
+    return send_ressource(filename,req);
+}
+
+//CSS handler
+esp_err_t css_get_handler(httpd_req_t *req)
+{
+    //on récupere le nom du fichier
+    //FILE *f=(FILE *) malloc( sizeof(FILE));
+    char* filename=malloc(sizeof(char) * FILENAME_LENGHT);
+    strcpy(filename,PATH_WEB);
+    //strcat(filename,"/");
+    strcat(filename,req->uri);
+    // on met en type text/mime
+    httpd_resp_set_type(req,"text/css");
+    return send_ressource(filename,req);
+}
 
 
 /* An HTTP GET handler */
@@ -105,10 +204,19 @@ esp_err_t hello_get_handler(httpd_req_t *req)
     return ESP_OK;
 }
 
-httpd_uri_t hello = {
-    .uri       = "/hello",
+httpd_uri_t html = {
+    .uri       = "/*.html",
     .method    = HTTP_GET,
-    .handler   = hello_get_handler,
+    .handler   = html_get_handler,
+    /* Let's pass response string in user
+     * context to demonstrate it's usage */
+    .user_ctx  = "Hello World!"
+};
+
+httpd_uri_t css = {
+    .uri       = "/*.css",
+    .method    = HTTP_GET,
+    .handler   = css_get_handler,
     /* Let's pass response string in user
      * context to demonstrate it's usage */
     .user_ctx  = "Hello World!"
@@ -146,65 +254,68 @@ esp_err_t echo_post_handler(httpd_req_t *req)
     return ESP_OK;
 }
 
-httpd_uri_t echo = {
-    .uri       = "/echo",
-    .method    = HTTP_POST,
-    .handler   = echo_post_handler,
-    .user_ctx  = NULL
-};
+/* An HTTP POST handler */
+esp_err_t upload_post_handler(httpd_req_t *req)
+{
+    char filepath[FILE_PATH_MAX];
+    FILE *fd = NULL;
+    struct stat file_stat;
+    char buffer[256];
+    
+    //const char *filename = get_path_from_uri(filepath,((struct file_server_data *)req->user_ctx)->base_path,req->uri + sizeof("/upload") - 1, sizeof(filepath));
+    httpd_req_recv(req,buffer,req->content_len);
+    ESP_LOGI(TAG,"buffer:%s",buffer);
+    
+    httpd_resp_send(req,NULL,0);
+    return ESP_OK;
+}
+
+
 
 /* An HTTP PUT handler. This demonstrates realtime
  * registration and deregistration of URI handlers
  */
-esp_err_t ctrl_put_handler(httpd_req_t *req)
-{
-    char buf;
-    int ret;
 
-    if ((ret = httpd_req_recv(req, &buf, 1)) <= 0) {
-        if (ret == HTTPD_SOCK_ERR_TIMEOUT) {
-            httpd_resp_send_408(req);
-        }
-        return ESP_FAIL;
-    }
 
-    if (buf == '0') {
-        /* Handler can be unregistered using the uri string */
-        ESP_LOGI(TAG, "Unregistering /hello and /echo URIs");
-        httpd_unregister_uri(req->handle, "/hello");
-        httpd_unregister_uri(req->handle, "/echo");
-    }
-    else {
-        ESP_LOGI(TAG, "Registering /hello and /echo URIs");
-        httpd_register_uri_handler(req->handle, &hello);
-        httpd_register_uri_handler(req->handle, &echo);
-    }
-
-    /* Respond with empty body */
-    httpd_resp_send(req, NULL, 0);
-    return ESP_OK;
-}
-
-httpd_uri_t ctrl = {
+/*httpd_uri_t ctrl = {
     .uri       = "/ctrl",
     .method    = HTTP_PUT,
     .handler   = ctrl_put_handler,
     .user_ctx  = NULL
-};
+};*/
 
 httpd_handle_t start_webserver(void)
 {
+    //static struct file_server_data *server_data = NULL;
+
+    /* Allocate memory for server data */
+    /*server_data = calloc(1, sizeof(struct file_server_data));
+    if (!server_data) {
+        ESP_LOGE(TAG, "Failed to allocate memory for server data");
+        return ESP_ERR_NO_MEM;
+    }
+    strlcpy(server_data->base_path,PATH_WEB,sizeof(server_data->base_path));*/
+    
+    httpd_uri_t upload = {
+        .uri       = "/upload",
+        .method    = HTTP_POST,
+        .handler   = upload_post_handler,
+        .user_ctx  = NULL
+    };
+    
     httpd_handle_t server = NULL;
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+    config.uri_match_fn=&parseRequest;
 
     // Start the httpd server
     ESP_LOGI(TAG, "Starting server on port: '%d'", config.server_port);
     if (httpd_start(&server, &config) == ESP_OK) {
         // Set URI handlers
         ESP_LOGI(TAG, "Registering URI handlers");
-        httpd_register_uri_handler(server, &hello);
-        httpd_register_uri_handler(server, &echo);
-        httpd_register_uri_handler(server, &ctrl);
+        httpd_register_uri_handler(server, &html);
+        httpd_register_uri_handler(server, &css);
+        httpd_register_uri_handler(server, &upload);
+        //httpd_register_uri_handler(server, &ctrl);
         return server;
     }
 
@@ -252,6 +363,23 @@ void app_main()
 
     ESP_ERROR_CHECK(spiffs_utils_init(SPIFFS_WIFI,PATH_WIFI));
     ESP_ERROR_CHECK(spiffs_utils_init(SPIFFS_WEB,PATH_WEB));
+
+    /*char* filename=malloc(sizeof(char) * FILENAME_LENGHT);
+    strcpy(filename,PATH_WEB);
+    strcat(filename,"/");
+    strcat(filename,"index.html");
+    char *string= "test html";
+    FILE *f=(FILE *) malloc( sizeof(FILE));
+    f = fopen(filename, "w");
+        if (f == NULL) {
+            ESP_LOGE(TAG, "Failed to open file for wrinting");
+        }
+        else{
+            ESP_LOGI(TAG, "string created:%s",string);
+            fprintf(f, "%s",string);
+            ESP_LOGI(TAG, "File written");
+        }
+        fclose(f);*/
 
     httpd_handle_t server = NULL;
 

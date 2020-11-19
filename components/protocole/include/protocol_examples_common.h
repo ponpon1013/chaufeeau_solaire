@@ -21,6 +21,7 @@ extern "C" {
 #define EXAMPLE_MAX_STA_CONN 32
 #define PATH_WIFI "/wifi"
 #define SPIFFS_WIFI "storage_wifi"
+#define FILENAME_LENGHT 128
 
 typedef struct connected connected;
 

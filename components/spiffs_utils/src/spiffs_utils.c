@@ -1,13 +1,13 @@
-#include "spiffs_utils.h"
+#include "../include/spiffs_utils.h"
 #include <stdio.h>
 #include <string.h>
 #include <sys/unistd.h>
 #include <sys/stat.h>
 #include "esp_err.h"
 #include "esp_log.h"
-#include "esp_spiffs.h"
+#include <esp_spiffs.h>
 
-static const char *TAG = "spîffs_utils";
+static const char *TAG = "spiffs_utils";
 
 esp_err_t spiffs_utils_init(const char* label,char* path){
     ESP_LOGI(TAG, "Initializing SPIFFS");

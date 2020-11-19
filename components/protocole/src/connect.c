@@ -44,7 +44,7 @@
 #define MAX_LENGTH_BUFF 16
 #define NAME_LENGHT 16
 #define PSWD_LENGHT 16
-#define FILENAME_LENGHT 128
+
 
 
 static EventGroupHandle_t s_connect_event_group;
@@ -314,7 +314,7 @@ esp_err_t example_connect(connected_tab *conected_AP)
     char* buff = malloc(sizeof(char) * MAX_LENGTH_BUFF);
     FILE *f=(FILE *) malloc( sizeof(FILE));
     char* filename=malloc(sizeof(char) * FILENAME_LENGHT);
-    strcat(filename,PATH_WIFI);
+    strcpy(filename,PATH_WIFI);
     strcat(filename,"/");
     strcat(filename,"wifi.conf");
     
@@ -324,7 +324,7 @@ esp_err_t example_connect(connected_tab *conected_AP)
         return ESP_ERR_INVALID_STATE;
     }
     
-    ESP_LOGI(TAG,"ouverture du fichier wifi.conf");
+    ESP_LOGI(TAG,"ouverture du fichier %s",filename);
     /*f = fopen(filename, "r");
     if (f == NULL) {
         ESP_LOGE(TAG, "Failed to open file for reading");
